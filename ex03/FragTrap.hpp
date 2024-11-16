@@ -2,10 +2,9 @@
 #define FRAGTRAP_HPP
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap{
-	private :
+class FragTrap : virtual public ClapTrap{
 		
-	public :
+	public:
 		FragTrap(std::string name);
 		FragTrap(FragTrap& other);
 		FragTrap();

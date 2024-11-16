@@ -10,14 +10,19 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)  {
 	std::cout << "ScavTrap " << _name << " enter to the ring" << std::endl;  
 }
 
-ScavTrap::ScavTrap(ScavTrap const& src) : ClapTrap(src)
+ScavTrap::ScavTrap(ScavTrap & src)
 {
-	_name = src._name;
-	_hitPoints = src._hitPoints;
-	_energyPoints = src._energyPoints;
-	_AttackDamage = src._AttackDamage;
-	is_guarding = src.is_guarding;
+	*this = src;
+}
 
+ScavTrap::ScavTrap() : ClapTrap()  {
+
+	_name = "unknow";
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_AttackDamage = 20;
+	is_guarding = false;
+	std::cout << "ScavTrap " << _name << " enter to the ring" << std::endl;  
 }
 
 ScavTrap::~ScavTrap()
@@ -89,13 +94,17 @@ void ScavTrap::beRepaired(unsigned int amount)
 }
 
 
-ScavTrap& ScavTrap::operator=(ScavTrap &src)
+ScavTrap& ScavTrap::operator=(const ScavTrap &src)
 {
-	_name = src._name;
-	_hitPoints = src._hitPoints;
-	_energyPoints = src._energyPoints;
-	_AttackDamage = src._AttackDamage;
-	is_guarding = src.is_guarding;
+	if (this != &src)
+	{
+		_name = src._name;
+		_hitPoints = src._hitPoints;
+		_energyPoints = src._energyPoints;
+		_AttackDamage = src._AttackDamage;
+		is_guarding = src.is_guarding;
+
+	}
 
 	return *this;
 }

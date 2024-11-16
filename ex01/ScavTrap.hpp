@@ -7,13 +7,14 @@ class ScavTrap : public ClapTrap{
 		bool is_guarding;
 	public :
 		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap& other);
+		ScavTrap(ScavTrap& other);
+		ScavTrap();
 		~ScavTrap();
 
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-		ScavTrap& operator=(ScavTrap &src);
+		ScavTrap& operator=(const ScavTrap &src);
 		void guardGate();
 };
 
